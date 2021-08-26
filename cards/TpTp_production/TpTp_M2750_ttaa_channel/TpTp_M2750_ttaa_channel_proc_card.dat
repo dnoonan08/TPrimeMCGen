@@ -1,0 +1,5 @@
+import model top3decays_ufo
+
+generate p p > tp tp~, tp > a t, tp~ > a t~
+
+output TpTp_M2750_ttaa_channel -nojpeg

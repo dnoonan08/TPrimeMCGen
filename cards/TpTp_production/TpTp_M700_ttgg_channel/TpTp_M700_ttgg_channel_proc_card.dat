@@ -1,0 +1,5 @@
+import model top3decays_ufo
+
+generate p p > tp tp~, tp > g t, tp~ > g t~
+
+output TpTp_M700_ttgg_channel -nojpeg
