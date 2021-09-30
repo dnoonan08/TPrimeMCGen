@@ -1,5 +1,6 @@
 import model top3decays_ufo
 
-generate p p > tp tp~, tp > a t, tp~ > a t~
+define wdecay = u d s c b u~ d~ s~ c~ b~ vl vl~ e+ e- mu+ mu- ta+ ta-
+generate p p > tp tp~, ( tp > a t, ( t > b w+, w+ > wdecay wdecay ) ), ( tp~ > a t~, ( t~ > b~ w-, w- > wdecay wdecay ) )
 
 output TpTp_M1000_ttaa_channel -nojpeg

@@ -271,7 +271,8 @@ $DEFAULT_PDF_MEMBERS = reweight_PDF     ! if pdlabel=lhapdf, this is the lhapdf 
 
 procCardData="""import model top3decays_ufo
 
-generate p p > tp tp~, tp > g t, tp~ > g t~
+define wdecay = u d s c b u~ d~ s~ c~ b~ vl vl~ e+ e- mu+ mu- ta+ ta-
+generate p p > tp tp~, ( tp > g t, ( t > b w+, w+ > wdecay wdecay ) ), ( tp~ > g t~, ( t~ > b~ w-, w- > wdecay wdecay ) )
 
 output TpTp_M%i_ttgg_channel -nojpeg
 """
@@ -290,7 +291,8 @@ set decay 600 AUTO
 MassList = [700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2250,2500,2750,3000]
 
 for m in MassList:
-    os.mkdir(f"TpTp_M{m}_ttgg_channel")
+    if not os.path.exists(f"TpTp_M{m}_ttgg_channel"):
+        os.mkdir(f"TpTp_M{m}_ttgg_channel")
 
     with open (f"TpTp_M{m}_ttgg_channel/TpTp_M{m}_ttgg_channel_customizecards.dat",'w') as _file:
         _file.write(customCardData%m)
